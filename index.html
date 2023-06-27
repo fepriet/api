@@ -6,6 +6,7 @@
 </head>
 <body>
   <button onclick="hacerLlamadaAPI()">Hacer llamada a la API</button>
+  <div id="resultado"></div>
 
   <script>
     function hacerLlamadaAPI() {
@@ -14,20 +15,22 @@
       
       // Datos a enviar en la solicitud POST (si es necesario)
       var requestData = {
-          medidas: [2, 1, 123, 456, 1, 1, 1, 1, 3, 2, 1.0, 0.0, 0.0, 0.0, 1, 5, 2, 3, 1, 5000, 10000, 2, 4, 6]
+        // Aquí puedes agregar los datos que la API espera recibir
+        // Ejemplo: medidas: [2, 1, 123, 456, 1, 1, 1, 1, 3, 2, 1.0, 0.0, 0.0, 0.0, 1, 5, 2, 3, 1, 5000, 10000, 2, 4, 6]
       };
 
       // Realizar la solicitud POST a la API
       axios.post(apiUrl, requestData)
         .then(function(response) {
-          // Manejar la respuesta de la API aquí
-          console.log(response.data);
+          // Mostrar el resultado en el elemento "resultado"
+          document.getElementById("resultado").innerHTML = "Resultado: " + response.data;
         })
         .catch(function(error) {
-          // Manejar cualquier error de la solicitud
-          console.error(error);
+          // Mostrar el error en el elemento "resultado"
+          document.getElementById("resultado").innerHTML = "Error: " + error;
         });
     }
   </script>
 </body>
 </html>
+
